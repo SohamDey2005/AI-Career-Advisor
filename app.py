@@ -6,9 +6,8 @@ import os
 # Configuration of Gemini API
 # ------------------------------
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") 
-if GOOGLE_API_KEY:
-    genai.configure(api_key=GOOGLE_API_KEY)
+if "GEMINI_API_KEY" in st.secrets:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
     model = genai.GenerativeModel("gemini-2.5-pro")
 else:
     model = None
@@ -89,4 +88,5 @@ if st.button("Ask Advisor"):
 
 st.markdown("---")
 st.caption("⚡ Powered by **Google Gemini AI** + **Streamlit**")
+
 st.caption("👨‍💻 Developed by **Soham Dey**")
